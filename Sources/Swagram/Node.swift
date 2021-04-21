@@ -10,7 +10,6 @@ import UIKit
 
 class Node {
     var id = ""
-    var index = 0
     var layoutPosition = LayoutPosition.middle
     
     var relationToParent: RelationToParent = .root
