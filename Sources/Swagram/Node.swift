@@ -11,19 +11,15 @@ import UIKit
 class Node {
     var id = ""
     var layoutPosition = LayoutPosition.middle
-    
     var relationToParent: RelationToParent = .root
-    var parent = [Node]()
-    var _children = [Node]()
-    var children: [Node] {
-        return _children
-    }
-    
+    private(set) var parent = [Node]()
+    private(set) var children = [Node]()
+    var relativePosition = CGPoint()
+
     func add(child: inout Node) {
-        _children.append(child)
+        children.append(child)
         child.parent = [self]
     }
-    
     
     var allNodes: [Node] {
         var array = [self]
@@ -35,7 +31,6 @@ class Node {
         return array
     }
     
-    var relativePosition = CGPoint()
     var absolutePosition: CGPoint {
         relativePosition.add(point: parent.first?.absolutePosition ?? CGPoint(x: 0, y: 0))
     }
