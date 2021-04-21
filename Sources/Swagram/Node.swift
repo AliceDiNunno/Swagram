@@ -59,12 +59,9 @@ class Node {
                     return CGSize(width: width, height: height)
                 }
             
-            let height = nodeChildrenSize.height > nodeSiblingsSize.height ? nodeChildrenSize.height : nodeSiblingsSize.height
-            let width = nodeChildrenSize.width > nodeSiblingsSize.width ? nodeChildrenSize.width : nodeSiblingsSize.width
-            initialSize.height = height
-            initialSize.width = width
+            initialSize.height = nodeChildrenSize.height > nodeSiblingsSize.height ? nodeChildrenSize.height : nodeSiblingsSize.height
+            initialSize.width = nodeChildrenSize.width > nodeSiblingsSize.width ? nodeChildrenSize.width : nodeSiblingsSize.width
             
-            //print("size for: \(id): h:\(initialSize.height), w: \(initialSize.width)")
             return initialSize
         }
     }
