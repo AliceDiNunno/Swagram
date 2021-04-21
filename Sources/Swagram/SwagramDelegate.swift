@@ -14,5 +14,5 @@ public protocol SwagramDelegate {
     func sizeForView(with id: String) -> CGSize
     func parent(of id: String) -> String?
     func children(of id: String) -> [String]
-    func sibling(of id: String, to: SiblingDirection) -> [String]
+    func sibling(of id: String) -> [String]
 }

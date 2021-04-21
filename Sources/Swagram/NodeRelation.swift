@@ -10,13 +10,11 @@ import Foundation
 public class NodeRelation<NodeItem> {
     private var _parent = NodeRelation<NodeItem>?(nil)
     private var _children = [NodeRelation<NodeItem>]()
-    private var _leftSibling = [NodeRelation<NodeItem>]()
-    private var _rightSibling = [NodeRelation<NodeItem>]()
+    private var _siblings = [NodeRelation<NodeItem>]()
     
     public var parent: NodeRelation<NodeItem>? { _parent }
     public var children: [NodeRelation<NodeItem>] { _children }
-    public var leftSibling: [NodeRelation<NodeItem>] { _leftSibling }
-    public var rightSibling: [NodeRelation<NodeItem>] { _rightSibling }
+    public var siblings: [NodeRelation<NodeItem>] { _siblings }
     
     
     var item: NodeItem
@@ -28,18 +26,8 @@ public class NodeRelation<NodeItem> {
         relation._children.append(self)
     }
     
-    func setLeftSibling(relations: [NodeRelation<NodeItem>]) {
-        _leftSibling = relations
-        for relation in relations {
-            relation._rightSibling.append(self)
-        }
-    }
-    
-    func setRightSibling(relations: [NodeRelation<NodeItem>]) {
-        _rightSibling = relations
-        for relation in relations {
-            relation._leftSibling.append(self)
-        }
+    func setSibling(relations: [NodeRelation<NodeItem>]) {
+        _siblings = relations
     }
     
     func setChildren(relations: [NodeRelation<NodeItem>]) {

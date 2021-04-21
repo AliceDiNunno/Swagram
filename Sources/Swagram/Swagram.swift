@@ -144,7 +144,7 @@ public class Swagram: UIViewController, UIGestureRecognizerDelegate {
         let thisNode = Node()
         thisNode.id = id
         
-        let siblings = delegate!.sibling(of: id, to: .right)
+        let siblings = delegate!.sibling(of: id)
         let siblingsCount = siblings.count
         var previousHeight = 0
         for (index, sibling) in siblings.enumerated() {
