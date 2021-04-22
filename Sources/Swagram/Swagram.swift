@@ -17,7 +17,9 @@ public class Swagram: UIViewController, UIGestureRecognizerDelegate {
     
     private var viewList = [UIView]()
     private var nodeCache = [Node: CGRect]()
-    
+    var lastPoint = CGPoint.zero
+    var translationOffset = CGPoint.zero
+
     func draw(node: Node, at: CGPoint) {
         guard delegate != nil else { return }
         
@@ -49,9 +51,7 @@ public class Swagram: UIViewController, UIGestureRecognizerDelegate {
         line.strokeColor = UIColor.white.cgColor
         layer?.addSublayer(line)
     }
-    
-    var translationOffset = CGPoint.zero
-    
+        
     func drawConnections(node: Node) {
         guard delegate != nil else { return }
         
@@ -80,7 +80,7 @@ public class Swagram: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    func reload() {
+    public func reload() {
         guard delegate != nil else {
             return
         }
@@ -108,8 +108,6 @@ public class Swagram: UIViewController, UIGestureRecognizerDelegate {
             drawConnections(node: mainNode!)
         }
     }
-
-    var lastPoint = CGPoint.zero
     
     @objc func graphPanned(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: self.view)

@@ -8,24 +8,21 @@
 import Foundation
 
 public class NodeRelation<NodeItem> {
-    private(set) var parent = NodeRelation<NodeItem>?(nil)
-    private(set) var children = [NodeRelation<NodeItem>]()
-    private(set) var siblings = [NodeRelation<NodeItem>]()
+    private(set) public var parent = NodeRelation<NodeItem>?(nil)
+    private(set) public var children = [NodeRelation<NodeItem>]()
+    private(set) public var siblings = [NodeRelation<NodeItem>]()
+    public var item: NodeItem
     
-    var item: NodeItem
-    
-    var relationText = ""
-    
-    func setParent(relation: NodeRelation<NodeItem>) {
+    public func setParent(relation: NodeRelation<NodeItem>) {
         parent = relation
         relation.children.append(self)
     }
     
-    func setSibling(relations: [NodeRelation<NodeItem>]) {
+    public func setSibling(relations: [NodeRelation<NodeItem>]) {
         siblings = relations
     }
     
-    func setChildren(relations: [NodeRelation<NodeItem>]) {
+    public func setChildren(relations: [NodeRelation<NodeItem>]) {
         children = relations
         for relation in relations {
             relation.parent = self
@@ -33,7 +30,7 @@ public class NodeRelation<NodeItem> {
         
     }
     
-    init(item: NodeItem) {
+    public init(item: NodeItem) {
         self.item = item
     }
 }
